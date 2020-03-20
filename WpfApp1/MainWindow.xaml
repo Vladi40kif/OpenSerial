@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Simple COM Console" Height="460" Width="690">
     <Grid>
         <ComboBox Name="ComboBox_COMs" HorizontalAlignment="Left" Margin="19,23,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_COMs_SelectionChanged" />
         <Label Content="Select COM:" HorizontalAlignment="Left" Margin="32,0,0,0" VerticalAlignment="Top" Height="34" Width="94"/>
@@ -27,8 +27,8 @@
         <ListBox Name="ListBox_Chat" Margin="230,5,0,50" HorizontalAlignment="Left" Width="420" VerticalAlignment="Stretch"/>
         <Button Name="Button_Start" Content="Start" HorizontalAlignment="Left" Margin="19,117,0,0" VerticalAlignment="Top" Height="25" Width="120" Click="Button_Start_Click"/>
         <Button Name="Button_Stop" Content="Stop" HorizontalAlignment="Left" Margin="19,158,0,0" VerticalAlignment="Top" Height="25" Width="120" Click="Button_Stop_Click"/>
-        <TextBox Name="TextBox_InputCommand" Margin="230,0,0,15" VerticalAlignment="Bottom" Height="25" Width="370" VerticalContentAlignment="Bottom" MinHeight="0" HorizontalAlignment="Left"/>
-        <Button Name="Button_Send" Content="SEND" Margin="610,0,0,15" VerticalAlignment="Bottom" Height="25" Width="40" VerticalContentAlignment="Bottom" MinHeight="0" HorizontalAlignment="Left"/>
+        <TextBox Name="TextBox_InputCommand" Margin="230,0,0,15" VerticalAlignment="Bottom" Height="25" Width="370" VerticalContentAlignment="Bottom" MinHeight="0" HorizontalAlignment="Left" KeyDown="TextBox_InputCommand_KeyDown" />
+        <Button Name="Button_Send" Content="SEND" Margin="605,0,0,15" VerticalAlignment="Bottom" Height="25" Width="45" VerticalContentAlignment="Bottom" MinHeight="0" HorizontalAlignment="Left" Click="Button_Send_Click" FontSize="14" />
 
 
 

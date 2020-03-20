@@ -39,8 +39,6 @@ namespace WpfApp1
 
         }
 
-
-
         public void InitCOMsList() {
             ComboBox_COMs.Items.Clear();
             foreach (string COM in SerialPort.GetPortNames())
@@ -54,7 +52,7 @@ namespace WpfApp1
             SerialPort sp = (SerialPort)sender;
             this.Dispatcher.Invoke(() =>
             {
-                ListBox_Chat.Items.Add(sp.ReadExisting());
+                ListBox_Chat.Items.Add(sp.ReadExisting().Trim());
                 var border = (Border)VisualTreeHelper.GetChild(ListBox_Chat, 0);
                 var scrollViewer = (ScrollViewer)VisualTreeHelper.GetChild(border, 0);
                 scrollViewer.ScrollToBottom();
@@ -94,103 +92,18 @@ namespace WpfApp1
             if (ComboBox_COMs.SelectedItem != null)
                 Button_Start.IsEnabled = true;
         }
-    }
-}
-
-public class PortChat
-{
-    static bool _continue;
-    static SerialPort _serialPort;
-
-    public static void XMain()
-    {
-
-        StringComparer stringComparer = StringComparer.OrdinalIgnoreCase;
-        Thread readThread = new Thread(Read);
-
-        // Create a new SerialPort object with default settings.
-        _serialPort = new SerialPort();
-
-        // Allow the user to set the appropriate properties.
-        _serialPort.PortName = SetPortName(_serialPort.PortName);
-        _serialPort.BaudRate = SetPortBaudRate(_serialPort.BaudRate);
-
-        // Set the read/write timeouts
-        _serialPort.ReadTimeout = 500;
-        _serialPort.WriteTimeout = 500;
-
-        _serialPort.Open();
-        _continue = true;
-        readThread.Start();
-
-        Console.WriteLine("Type QUIT to exit");
-
-        String message;
-        while (_continue)
+        private void Button_Send_Click(object sender, RoutedEventArgs e)
         {
-            message = Console.ReadLine();
-
-            if (stringComparer.Equals("quit", message))
-            {
-                _continue = false;
-            }
-            else
-            {
-                _serialPort.WriteLine(
-                    String.Format("COM: {0}", message));
-            }
+            this.Dispatcher.Invoke(() => ListBox_Chat.Items.Add(TextBox_InputCommand.Text));
+            var border = (Border)VisualTreeHelper.GetChild(ListBox_Chat, 0);
+            var scrollViewer = (ScrollViewer)VisualTreeHelper.GetChild(border, 0);
+            scrollViewer.ScrollToBottom();
+            _serialPort.WriteLine(TextBox_InputCommand.Text);
         }
-
-        readThread.Join();
-        _serialPort.Close();
-    }
-
-    public static void Read()
-    {
-        while (_continue)
+        private void TextBox_InputCommand_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
-                string message = _serialPort.ReadLine();
-                Console.WriteLine(message);
-            }
-            catch (TimeoutException) { }
+            if(e.Key == Key.Enter)
+            Button_Send_Click(this, new RoutedEventArgs());
         }
-    }
-
-    // Display Port values and prompt user to enter a port.
-    public static string SetPortName(string defaultPortName)
-    {
-        string portName;
-
-        Console.WriteLine("Available Ports:");
-        foreach (string s in SerialPort.GetPortNames())
-        {
-            Console.WriteLine("   {0}", s);
-        }
-
-        Console.Write("Enter COM port value (Default: {0}): ", defaultPortName);
-        portName = Console.ReadLine();
-
-        if (portName == "" || !(portName.ToLower()).StartsWith("com"))
-        {
-            portName = defaultPortName;
-        }
-        return portName;
-    }
-    // Display BaudRate values and prompt user to enter a value.
-    public static int SetPortBaudRate(int defaultPortBaudRate)
-    {
-        string baudRate;
-
-        Console.Write("Baud Rate(default:{0}): ", defaultPortBaudRate);
-        baudRate = Console.ReadLine();
-
-        if (baudRate == "")
-        {
-            baudRate = defaultPortBaudRate.ToString();
-        }
-
-        return int.Parse(baudRate);
     }
 }
