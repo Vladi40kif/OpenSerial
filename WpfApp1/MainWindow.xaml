@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ComboBox Name="ComboBox_COMs" HorizontalAlignment="Left" Margin="19,23,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_COMs_SelectionChanged" />
+        <Label Content="Select COM:" HorizontalAlignment="Left" Margin="32,0,0,0" VerticalAlignment="Top" Height="34" Width="94"/>
+        <Button Name="Button_Reflesh_COMs_list" Content="Refresh" HorizontalAlignment="Left" Margin="148,24,0,0" VerticalAlignment="Top" Height="21" Width="67" Click="Button_Reflesh_COMs_list_Click"/>
+        <ComboBox Name="ComboBox_Bundrate" HorizontalAlignment="Left" Margin="19,69,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_Bundrate_SelectionChanged" >
+            <TextBlock>300</TextBlock>
+            <TextBlock>1200</TextBlock>
+            <TextBlock>2400</TextBlock>
+            <TextBlock>4800</TextBlock>
+            <TextBlock>9600</TextBlock>
+            <TextBlock>19200</TextBlock>
+            <TextBlock>38400</TextBlock>
+            <TextBlock>57600</TextBlock>
+            <TextBlock>74880</TextBlock>
+            <TextBlock>115200</TextBlock>
+        </ComboBox>
+        <Label Content="Select bund rate:" HorizontalAlignment="Left" Margin="30,46,0,0" VerticalAlignment="Top" Height="34" Width="107"/>
+        <ListBox Name="ListBox_Chat" Margin="252,25,272,81"/>
+        <Button Name="Button_Start" Content="Start" HorizontalAlignment="Left" Margin="19,117,0,0" VerticalAlignment="Top" Height="25" Width="120" Click="Button_Start_Click"/>
+        <Button Name="Button_Stop" Content="Stop" HorizontalAlignment="Left" Margin="19,158,0,0" VerticalAlignment="Top" Height="25" Width="120" Click="Button_Stop_Click"/>
+
+    </Grid>
+
+</Window>
