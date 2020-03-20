@@ -90,13 +90,15 @@ namespace WpfApp1
         }
         private void Button_Send_Click(object sender, RoutedEventArgs e)
         {
-            this.Dispatcher.Invoke(() => AddToListBox(TextBox_InputCommand.Text));
+            if(CheckBox_ShowTime.IsChecked == true)
+                this.Dispatcher.Invoke(() => AddToListBox(TextBox_InputCommand.Text));
+
             _serialPort.WriteLine(TextBox_InputCommand.Text);
         }
         private void TextBox_InputCommand_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter)
-            Button_Send_Click(this, new RoutedEventArgs());
+                Button_Send_Click(this, new RoutedEventArgs());
         }
         private void AddToListBox(string msg) {
             time = DateTime.Now;
@@ -105,6 +107,15 @@ namespace WpfApp1
             var border = (Border)VisualTreeHelper.GetChild(ListBox_Chat, 0);
             var scrollViewer = (ScrollViewer)VisualTreeHelper.GetChild(border, 0);
             scrollViewer.ScrollToBottom();
+        }
+
+        private void CheckBox_ShowTime_Checked(object sender, RoutedEventArgs e){
+            CheckBox_ShowSendData.IsChecked = true;
+            CheckBox_ShowSendData.IsEnabled = false;
+        }
+
+        private void CheckBox_ShowTime_Unchecked(object sender, RoutedEventArgs e){
+            CheckBox_ShowSendData.IsEnabled = true;
         }
     }
 }
