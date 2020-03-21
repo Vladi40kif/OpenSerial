@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using System.IO;
+using Microsoft.Win32;
 
 namespace WpfApp1
 {
@@ -46,9 +48,12 @@ namespace WpfApp1
             foreach (string COM in SerialPort.GetPortNames())
                 ComboBox_COMs.Items.Add(COM);
         }
-        private void Button_Reflesh_COMs_list_Click(object sender, RoutedEventArgs e){
-            InitCOMsList();
+        private void Button_RefleshCOMsList_Click(object sender, RoutedEventArgs e){
+            if (_serialPort.IsOpen)
+                _serialPort.Close();
             Button_Start.IsEnabled = false;
+            Button_Stop.IsEnabled = false;
+            InitCOMsList();
         }
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e){
             SerialPort sp = (SerialPort)sender;
@@ -108,14 +113,26 @@ namespace WpfApp1
             var scrollViewer = (ScrollViewer)VisualTreeHelper.GetChild(border, 0);
             scrollViewer.ScrollToBottom();
         }
-
         private void CheckBox_ShowTime_Checked(object sender, RoutedEventArgs e){
             CheckBox_ShowSendData.IsChecked = true;
             CheckBox_ShowSendData.IsEnabled = false;
         }
-
         private void CheckBox_ShowTime_Unchecked(object sender, RoutedEventArgs e){
             CheckBox_ShowSendData.IsEnabled = true;
+        }
+        private void Button_ClearConsole_Click(object sender, RoutedEventArgs e){
+            ListBox_Chat.Items.Clear();
+        }
+        private void Button_LogSave_Click(object sender, RoutedEventArgs e){
+            SaveFileDialog saveFileDialog = new SaveFileDialog();   
+            if (saveFileDialog.ShowDialog() == true)
+            {
+
+                var FilePath = saveFileDialog.FileName;
+                using (var file = new StreamWriter(FilePath))
+                    foreach (var item in ListBox_Chat.Items)
+                        file.WriteLine(item.ToString());                
+            }
         }
     }
 }

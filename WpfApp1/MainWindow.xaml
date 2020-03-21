@@ -9,7 +9,7 @@
     <Grid>
         <ComboBox Name="ComboBox_COMs" HorizontalAlignment="Left" Margin="19,23,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_COMs_SelectionChanged" />
         <Label Content="Select COM:" HorizontalAlignment="Left" Margin="32,0,0,0" VerticalAlignment="Top" Height="34" Width="94"/>
-        <Button Name="Button_Reflesh_COMs_list" Content="Refresh" HorizontalAlignment="Left" Margin="148,24,0,0" VerticalAlignment="Top" Height="21" Width="67" Click="Button_Reflesh_COMs_list_Click"/>
+        <Button Name="Button_RefleshCOMsList" Content="Refresh" HorizontalAlignment="Left" Margin="148,24,0,0" VerticalAlignment="Top" Height="21" Width="67" Click="Button_RefleshCOMsList_Click"/>
         <ComboBox Name="ComboBox_Bundrate" HorizontalAlignment="Left" Margin="19,69,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_Bundrate_SelectionChanged" >
             <TextBlock>300</TextBlock>
             <TextBlock>1200</TextBlock>
@@ -31,6 +31,8 @@
         <Button Name="Button_Send" Content="SEND" Margin="605,0,0,15" VerticalAlignment="Bottom" Height="25" Width="45" VerticalContentAlignment="Bottom" MinHeight="0" HorizontalAlignment="Left" Click="Button_Send_Click" FontSize="14" />
         <CheckBox Name="CheckBox_ShowTime" Content="Show time" HorizontalAlignment="Left" Margin="19,207,0,0" VerticalAlignment="Top" Width="91" Checked="CheckBox_ShowTime_Checked" Unchecked="CheckBox_ShowTime_Unchecked"/>
         <CheckBox Name="CheckBox_ShowSendData" Content="Show send data" HorizontalAlignment="Left" Margin="19,231,0,0" VerticalAlignment="Top"/>
+        <Button Name="Button_ClearConsole" Content="Claear" HorizontalAlignment="Left" Margin="17,300,0,0" VerticalAlignment="Top" Height="25" Width="54" Click="Button_ClearConsole_Click"/>
+        <Button Name="Button_LogSave" Content="Save log" HorizontalAlignment="Left" Margin="85,300,0,0" VerticalAlignment="Top" Height="25" Width="54" Click="Button_LogSave_Click"/>
 
 
 
