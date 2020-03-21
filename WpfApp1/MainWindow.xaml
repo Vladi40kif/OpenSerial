@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Simple COM Console" Height="460" Width="690">
+        Title="Simple COM Console" Height="460" Width="690" ScrollViewer.HorizontalScrollBarVisibility="Auto" MinWidth="500" MinHeight="380">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="94*"/>
+            <ColumnDefinition Width="251*"/>
+        </Grid.ColumnDefinitions>
         <ComboBox Name="ComboBox_COMs" HorizontalAlignment="Left" Margin="19,23,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_COMs_SelectionChanged" />
         <Label Content="Select COM:" HorizontalAlignment="Left" Margin="32,0,0,0" VerticalAlignment="Top" Height="34" Width="94"/>
-        <Button Name="Button_RefleshCOMsList" Content="Refresh" HorizontalAlignment="Left" Margin="148,24,0,0" VerticalAlignment="Top" Height="21" Width="67" Click="Button_RefleshCOMsList_Click"/>
+        <Button Name="Button_RefleshCOMsList" Content="Refresh" HorizontalAlignment="Left" Margin="148,24,0,0" VerticalAlignment="Top" Height="21" Width="67" Click="Button_RefleshCOMsList_Click" Grid.ColumnSpan="2"/>
         <ComboBox Name="ComboBox_Bundrate" HorizontalAlignment="Left" Margin="19,69,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_Bundrate_SelectionChanged" >
             <TextBlock>300</TextBlock>
             <TextBlock>1200</TextBlock>
@@ -24,11 +28,11 @@
         </ComboBox>
         <Label Content="Select bund rate:" HorizontalAlignment="Left" Margin="30,46,0,0" VerticalAlignment="Top" Height="34" Width="107"/>
 
-        <ListBox Name="ListBox_Chat" Margin="230,5,0,50" HorizontalAlignment="Left" Width="420" VerticalAlignment="Stretch"/>
+        <ListBox Name="ListBox_Chat" Margin="42,10,20,50" Grid.Column="1"/>
         <Button Name="Button_Start" Content="Start" HorizontalAlignment="Left" Margin="19,117,0,0" VerticalAlignment="Top" Height="25" Width="120" Click="Button_Start_Click"/>
         <Button Name="Button_Stop" Content="Stop" HorizontalAlignment="Left" Margin="19,158,0,0" VerticalAlignment="Top" Height="25" Width="120" Click="Button_Stop_Click"/>
-        <TextBox Name="TextBox_InputCommand" Margin="230,0,0,15" VerticalAlignment="Bottom" Height="25" Width="370" VerticalContentAlignment="Bottom" MinHeight="0" HorizontalAlignment="Left" KeyDown="TextBox_InputCommand_KeyDown" />
-        <Button Name="Button_Send" Content="SEND" Margin="605,0,0,15" VerticalAlignment="Bottom" Height="25" Width="45" VerticalContentAlignment="Bottom" MinHeight="0" HorizontalAlignment="Left" Click="Button_Send_Click" FontSize="14" />
+        <TextBox Name="TextBox_InputCommand" Margin="42,0,75,15" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" MinHeight="0" KeyDown="TextBox_InputCommand_KeyDown" FontSize="16" Grid.Column="1" />
+        <Button Name="Button_Send" Content="SEND" Margin="0,0,20,15" VerticalAlignment="Bottom" Height="25" Width="45" VerticalContentAlignment="Bottom" MinHeight="0" HorizontalAlignment="Right" Click="Button_Send_Click" FontSize="14" Grid.Column="1" />
         <CheckBox Name="CheckBox_ShowTime" Content="Show time" HorizontalAlignment="Left" Margin="19,207,0,0" VerticalAlignment="Top" Width="91"/>
         <CheckBox Name="CheckBox_ShowSendData" Content="Show send data" HorizontalAlignment="Left" Margin="19,231,0,0" VerticalAlignment="Top"/>
         <Button Name="Button_ClearConsole" Content="Clear" HorizontalAlignment="Left" Margin="17,300,0,0" VerticalAlignment="Top" Height="25" Width="54" Click="Button_ClearConsole_Click"/>

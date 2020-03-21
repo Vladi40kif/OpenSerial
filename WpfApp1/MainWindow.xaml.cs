@@ -42,7 +42,6 @@ namespace WpfApp1
             _serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
         }
-
         public void InitCOMsList() {
             ComboBox_COMs.Items.Clear();
             foreach (string COM in SerialPort.GetPortNames())
