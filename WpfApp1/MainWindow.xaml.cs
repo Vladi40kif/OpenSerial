@@ -95,7 +95,7 @@ namespace WpfApp1
         }
         private void Button_Send_Click(object sender, RoutedEventArgs e)
         {
-            if(CheckBox_ShowTime.IsChecked == true)
+            if(CheckBox_ShowSendData.IsChecked == true)
                 this.Dispatcher.Invoke(() => AddToListBox(TextBox_InputCommand.Text));
 
             _serialPort.WriteLine(TextBox_InputCommand.Text);
@@ -113,25 +113,21 @@ namespace WpfApp1
             var scrollViewer = (ScrollViewer)VisualTreeHelper.GetChild(border, 0);
             scrollViewer.ScrollToBottom();
         }
-        private void CheckBox_ShowTime_Checked(object sender, RoutedEventArgs e){
-            CheckBox_ShowSendData.IsChecked = true;
-            CheckBox_ShowSendData.IsEnabled = false;
-        }
-        private void CheckBox_ShowTime_Unchecked(object sender, RoutedEventArgs e){
-            CheckBox_ShowSendData.IsEnabled = true;
-        }
         private void Button_ClearConsole_Click(object sender, RoutedEventArgs e){
             ListBox_Chat.Items.Clear();
         }
         private void Button_LogSave_Click(object sender, RoutedEventArgs e){
-            SaveFileDialog saveFileDialog = new SaveFileDialog();   
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Save";
+            saveFileDialog.FileName = "*.txt";
             if (saveFileDialog.ShowDialog() == true)
             {
-
                 var FilePath = saveFileDialog.FileName;
                 using (var file = new StreamWriter(FilePath))
+                {
                     foreach (var item in ListBox_Chat.Items)
-                        file.WriteLine(item.ToString());                
+                        file.WriteLine(item.ToString());
+                }
             }
         }
     }

@@ -29,14 +29,10 @@
         <Button Name="Button_Stop" Content="Stop" HorizontalAlignment="Left" Margin="19,158,0,0" VerticalAlignment="Top" Height="25" Width="120" Click="Button_Stop_Click"/>
         <TextBox Name="TextBox_InputCommand" Margin="230,0,0,15" VerticalAlignment="Bottom" Height="25" Width="370" VerticalContentAlignment="Bottom" MinHeight="0" HorizontalAlignment="Left" KeyDown="TextBox_InputCommand_KeyDown" />
         <Button Name="Button_Send" Content="SEND" Margin="605,0,0,15" VerticalAlignment="Bottom" Height="25" Width="45" VerticalContentAlignment="Bottom" MinHeight="0" HorizontalAlignment="Left" Click="Button_Send_Click" FontSize="14" />
-        <CheckBox Name="CheckBox_ShowTime" Content="Show time" HorizontalAlignment="Left" Margin="19,207,0,0" VerticalAlignment="Top" Width="91" Checked="CheckBox_ShowTime_Checked" Unchecked="CheckBox_ShowTime_Unchecked"/>
+        <CheckBox Name="CheckBox_ShowTime" Content="Show time" HorizontalAlignment="Left" Margin="19,207,0,0" VerticalAlignment="Top" Width="91"/>
         <CheckBox Name="CheckBox_ShowSendData" Content="Show send data" HorizontalAlignment="Left" Margin="19,231,0,0" VerticalAlignment="Top"/>
-        <Button Name="Button_ClearConsole" Content="Claear" HorizontalAlignment="Left" Margin="17,300,0,0" VerticalAlignment="Top" Height="25" Width="54" Click="Button_ClearConsole_Click"/>
+        <Button Name="Button_ClearConsole" Content="Clear" HorizontalAlignment="Left" Margin="17,300,0,0" VerticalAlignment="Top" Height="25" Width="54" Click="Button_ClearConsole_Click"/>
         <Button Name="Button_LogSave" Content="Save log" HorizontalAlignment="Left" Margin="85,300,0,0" VerticalAlignment="Top" Height="25" Width="54" Click="Button_LogSave_Click"/>
-
-
-
-
     </Grid>
 
 </Window>
