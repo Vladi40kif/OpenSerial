@@ -2,7 +2,7 @@
 
 Simple and chip console for serial.   
 
-![alt text](ladi40kif/OpenSerial/blob/master/img.jpg?raw=true)
+![alt text](https://github.com/Vladi40kif/OpenSerial/blob/master/img.jpg?raw=true)
 
 ## NO need installation
 
